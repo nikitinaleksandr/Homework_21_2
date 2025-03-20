@@ -13,10 +13,13 @@ class MyServer(BaseHTTPRequestHandler):
         self.send_response(200) # Отправка кода ответа
         self.send_header("Content-type", "text/html") # Отправка типа данных, который будет передаваться
         self.end_headers() # Завершение формирования заголовков ответа
+
         # self.wfile.write(bytes("{'message': 'OK'}", "utf-8")) # Тело ответа
-        with open('main-3.html') as file:
-            # self.wfile.write(file.read().encode('utf-8'))
-            self.wfile.write(file.read().encode())
+        # with open('main-3.html') as file:
+        #     self.wfile.write(file.read().encode('utf-8'))
+        with open('main-3.html', 'r', encoding='utf-8') as file:
+            self.wfile.write(file.read().encode('utf-8'))
+            # self.wfile.write(file.read().encode())
 if __name__ == "__main__":
     # Инициализация веб-сервера, который будет по заданным параметрах в сети
     # принимать запросы и отправлять их на обработку специальному классу, который был описан выше
